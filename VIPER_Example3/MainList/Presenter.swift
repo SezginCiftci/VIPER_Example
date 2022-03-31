@@ -40,7 +40,7 @@ final class UserPresenter: UserPresenterProtocol {
     }
     
     func navigateToDetail(at index: Int) {
-        self.router?.showDetail(at: index) // look that
+        self.router?.showDetail(at: index, on: view  as! UserView) // look that
     }
 
 }

@@ -12,7 +12,7 @@ protocol DetailPresenterProtocol {
     var detailView: DetailViewProtocol? { get set }
     var detailInteractor: DetailInteractorProtocol? { get set }
     var detailRouter: DetailRouterProtocol? { get set }
-    func notifyView() -> UINavigationController
+    //func notifyView() -> UINavigationController
     func displayDetail(with user: [UserModel])
     func interactorDidFetchDetail(with result: Result<[UserModel], Error>)
 }
@@ -33,9 +33,9 @@ final class DetailPresenter: DetailPresenterProtocol {
         self.index = index
     }
     
-    func notifyView() -> UINavigationController {
-        return UINavigationController(rootViewController: detailView as! UIViewController)
-    }
+//    func notifyView() -> UINavigationController {
+//        return UINavigationController(rootViewController: detailView as! UIViewController)
+//    }
     
     func displayDetail(with user: [UserModel]) {
         self.user = user

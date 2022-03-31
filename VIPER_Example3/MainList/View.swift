@@ -18,7 +18,7 @@ protocol UserViewProtocol {
 class UserView: UIViewController, UserViewProtocol {
     
     var presenter: UserPresenterProtocol?
-        
+    
     var userTable: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false

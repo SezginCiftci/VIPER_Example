@@ -14,27 +14,26 @@ protocol DetailRouterProtocol {
 final class DetailRouter: DetailRouterProtocol {
     
     
-    weak var view: UIViewController?
+    //weak var view: UIViewController?
     
-    class func createModule(index: Int) -> DetailView {
+    class func createModule(index: Int) -> UIViewController {
         let view = DetailView()
         let presenter = DetailPresenter(index: index)
         let interactor = DetailInteractor()
         let router = DetailRouter()
         
-        view.detailPresenterProtocol = presenter
+        view.detailPresenter = presenter
         interactor.detailPresenter = presenter
-        router.view = view
+        //router.view = view
         presenter.detailView = view
         presenter.detailRouter = router
         presenter.detailInteractor = interactor
-  
+
         return view
     }
   
     
 }
-
 
 //typealias EntryPointDetail = DetailViewProtocol & UIViewController
 //
@@ -67,5 +66,4 @@ final class DetailRouter: DetailRouterProtocol {
 //
 //        return detailRouter
 //    }
-//
 //}

@@ -12,20 +12,20 @@ typealias EntryPoint = UserViewProtocol & UIViewController
 
 protocol UserRouterProtocol {
     var entry: EntryPoint? { get }
-    func showDetail(at index: Int)
+    func showDetail(at index: Int, on view: UserViewProtocol)
     static func start() -> UserRouterProtocol
 }
 
 final class UserRouter: UserRouterProtocol {
     
     var entry: EntryPoint?
-    var view: UIViewController?
+  //  var view: UserView?
     
-    func showDetail(at index: Int) {
+    func showDetail(at index: Int, on view: UserViewProtocol) {
         let detailVC = DetailRouter.createModule(index: index)
-        view?.present(detailVC, animated: true)
-        
-     //   view?.navigationController?.pushViewController(detailVC, animated: true)
+        guard let sourceView = view as? UIViewController else { return }
+        sourceView.navigationController?.pushViewController(detailVC, animated: true)
+
     }
     
     static func start() -> UserRouterProtocol {
